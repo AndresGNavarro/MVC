@@ -11,4 +11,14 @@ class Utils{
 		}
 		return $name;
 	}
+
+	public static function isAdmin(){
+//Esta funcion trabaja como un Middleware, se utiliza en las funciones que unicamente queremos que sean ejecutadas con un usuario logeado tipo admin
+		if (!isset($_SESSION['admin'])){
+			header("Location:".base_url);
+		}else{
+			return true;
+		}
+		
+	}
 }
