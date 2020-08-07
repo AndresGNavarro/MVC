@@ -4,8 +4,25 @@ require_once 'models/producto.php';
 class productoController{
 
 	public function index(){
+		$producto = New Producto();
+		$productos = $producto->getRandom(6);
+		
 		//Renderizar vista
 		require_once 'views/producto/destacados.php';
+	}
+
+	public function ver(){
+		 if (isset($_GET['id'])) {
+			$id = $_GET['id'];			
+
+			$producto = new Producto();
+			$producto->setId($id);
+
+			$product = $producto->getOne();
+
+		}
+		//Renderizar vista
+		require_once 'views/producto/ver.php';
 	}
 
 	public function gestion(){
